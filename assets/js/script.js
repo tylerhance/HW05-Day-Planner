@@ -1,12 +1,13 @@
 // Global variables
 var appointmentTextEl = "";
 var appointmentTimeEl = "";
+var storedAppointment;
+var returnedAppointment;
 var currentDate;
 var currentTime;
 var currentContainer;
 var appointmentArray = [];
-var storedAppointment;
-var returnedAppointment;
+
 
 // Function using jQuery and moment.js to display current day/time
 $(window).on("load", function () {
@@ -14,6 +15,7 @@ $(window).on("load", function () {
   $("#currentDay").append(currentDate);
   currentTime = moment().format("H");
 
+// Rendering the appointment in the time slot the user inputs
   function renderAppointments() {
     storedAppointment = JSON.parse(localStorage.getItem("appointments"));
     if (storedAppointment !== null) {
@@ -34,7 +36,7 @@ $(window).on("load", function () {
   }
   renderAppointments();
 
-  
+  // Loop for the hours and tracking the hours to determine if its in the past, present, or future
   for (i = 0; i <= 23; i++) {
     currentContainer = i;
     if (currentTime == i) {
@@ -62,6 +64,7 @@ $(window).on("load", function () {
   }
 });
 
+// Click of the save button saves the user input/appointment and time block to local storage
 $(".saveBtn").click(function () {
   appointmentTextEl = $(this)
     .parent("div")

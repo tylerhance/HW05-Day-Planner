@@ -10,3 +10,7 @@
 
 
 <h2>Links</h2>
+
+* Here is the link to the deployed project @ 
+
+![WorkDayPlannerScreenshot](./assets/images/workdayscreenshot.png)
