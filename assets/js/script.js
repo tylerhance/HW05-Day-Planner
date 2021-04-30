@@ -4,7 +4,7 @@ var appointmentTimeEl = "";
 var currentDate;
 var currentTime;
 var currentContainer;
-var eventArray = [];
+var appointmentArray = [];
 var storedAppointment;
 var returnedAppointment;
 
@@ -73,15 +73,15 @@ $(".saveBtn").click(function () {
     time: appointmentTimeEl,
     details: appointmentTextEl,
   };
-  eventArray = JSON.parse(localStorage.getItem("appointments"));
-  if (eventArray === null) {
+  appointmentArray = JSON.parse(localStorage.getItem("appointments"));
+  if (appointmentArray === null) {
     localStorage.setItem(
       "appointments",
       JSON.stringify([{ time: appointmentTimeEl, details: appointmentTextEl }])
     );
   } else {
-    eventArray.push(appointment);
-    localStorage.setItem("appointments", JSON.stringify(eventArray));
+    appointmentArray.push(appointment);
+    localStorage.setItem("appointments", JSON.stringify(appointmentArray));
   }
   $(this)
     .parent("div")
